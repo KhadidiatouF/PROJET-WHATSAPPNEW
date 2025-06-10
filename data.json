@@ -1,0 +1,71 @@
+{
+  "utilisateurs": [
+    {
+      "id": "1",
+      "pays": "fr",
+      "nom": "Khadija",
+      "prenom": "Fall",
+      "numero": "+33612345678",
+      "Online": true,
+      "archive": true,
+      "messages": [
+        {
+          "from": 2,
+          "to": 1,
+          "contenu": "Nkamou",
+          "timestamp": "2025-06-05T12:00:00"
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "contenu": "Salut",
+          "timestamp": "2025-06-05T12:00:00"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "pays": "sn",
+      "nom": "Jamila",
+      "prenom": "NDiaye",
+      "numero": "+221784318598",
+      "Online": true,
+      "archive": true,
+      "messages": [
+        {
+          "from": 2,
+          "to": 1,
+          "contenu": "Oui bonjour",
+          "timestamp": "2025-06-05T12:00:00"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "pays": "us",
+      "nom": "Bakary",
+      "prenom": "Diassy",
+      "numero": "+12023341234",
+      "Online": true,
+      "archive": true,
+      "messages": [
+        {
+          "from": 2,
+          "to": 1,
+          "contenu": "Hi what's up",
+          "timestamp": "2025-06-05T12:00:00"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "numero": "+221789988001",
+      "nom": "aly",
+      "prenom": "breukh",
+      "pays": "sn",
+      "Online": false,
+      "archive": false,
+      "messages": []
+    }
+  ]
+}
