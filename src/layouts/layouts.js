@@ -2,6 +2,9 @@ import { router } from "../routerr.js";
 import { getUser } from "../services/server.js";
 import { listeMessage } from "../views/listeMessages.js";
 import { ajouterContact } from "../components/creerContact.js";
+import { ajoutGroupe } from "../components/creerGroupe.js";
+import { titreDynamique } from "../components/titreDynamique.js";
+import { listeGroupe } from "../views/afficherGroup.js";
 
 
 export  function interfaceU() {
@@ -12,34 +15,35 @@ export  function interfaceU() {
     contenu.innerHTML=`
         
     
-        <div class="w-[6rem]  justify-between rounded-tl-[50px] rounded-bl-[50px]  bg-[#202c33] border-r border-gray-700 flex flex-col">
-           <div class="flex m-1 mt-6 text-center flex-col text-2xl text-[#aebac1] space-y-5 cursor-pointer ">
-                <div><i class="fa-solid fa-message"></i>
+        <div class="w-[8rem]  justify-between rounded-tl-[50px] rounded-bl-[50px]  bg-[#202c33] border-r border-gray-700 flex flex-col">
+           <div class="title flex m-1 mt-4 justify-center items-center text-center  flex-col text-2xl text-[#aebac1] space-y-4 cursor-pointer ">
+                <div tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
+                    <i class=" mt-[10px] fa-solid fa-message"></i>
                     <h5 class="text-xs font-bold">Messages</h5>
-
                 </div>
                 
-                <div><i class="fa-solid fa-circle-notch "></i>
+                <div tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
+                  <i class="mt-[10px] fa-solid fa-circle-notch "></i>
                     <h5 class="text-xs font-bold">Statuts</h5>
-
                 </div>
 
-                <div><i class="fa-regular fa-comment  "></i>
+                <div tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
+                    <i class="mt-[10px] fa-regular fa-comment  "></i>
                     <h5 class="text-xs font-bold">Chaines</h5>
-
                 </div>
 
-                <div><i class="fa-solid fa-users "></i>
+                <div tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
+                    <i class="mt-[10px] fa-solid fa-users "></i>
                     <h5 class="text-xs font-bold">Communautés</h5>
-
                 </div>
 
-                <div id="btnAjoutContact" ><i class="fa-solid fa-user-plus"></i>
+                <div id="btnAjoutContact"  tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 " >
+                    <i class="mt-[10px] fa-solid fa-user-plus"></i>
                     <h5 class="text-xs font-bold">Ajout contact</h5>
-
                 </div>
                 
-                <div  ><i class="fa-solid fa-folder-plus"></i>
+                <div id="btnAjoutGroupe" tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
+                    <i class="mt-[10px] fa-solid fa-folder-plus"></i>
                     <h5 class="text-xs font-bold">Ajout groupe</h5>
                 </div>
           
@@ -59,7 +63,7 @@ export  function interfaceU() {
             <!-- Header -->
             <div class="bg-[#111b21]- p-4 border-b border-gray-700">
                 <div class="flex items-center justify-between mb-4">
-                    <h1 class="text-xl font-semibold text-white">Discussions</h1>
+                    <h1 class="titreH text-xl font-semibold text-white">Discussions</h1>
                     <div class="flex items-center space-x-2">
                         <button class="p-2 hover:bg-white rounded-full">
                             <i class="fas fa-ellipsis-v text-white"></i>
@@ -210,11 +214,11 @@ export  function interfaceU() {
         <div class="flex-1 flex flex-col">
             <!-- Chat Header -->
             <div class="bg-[#202c33] p-4 border-b rounded-tr-[50px]  border-gray-200 flex items-center justify-between">
-                <div class="flex items-center">
+                <div class="profil flex items-center">
                     <img src="https://i.pravatar.cc/40?img=5" alt="Lady React SA" class="w-10 h-10 rounded-full">
                     <div class="ml-3">
-                        <h2 class="font-semibold text-white">Lady React SA 🔥</h2>
-                        <p class="text-sm text-gray-400">Dernière connexion hier</p>
+                        <h2 class=nom-profil "font-semibold text-white">Lady React SA 🔥</h2>
+                        <p class="numero-profil text-sm text-gray-400">Dernière connexion hier</p>
                     </div>
                 </div>
                 
@@ -384,15 +388,48 @@ export  function interfaceU() {
         
     `;
 
+   
+
     const btnAjoutC = contenu.querySelector('#btnAjoutContact')
     btnAjoutC.addEventListener("click", () => {
         const popup = ajouterContact();
         contenu.appendChild(popup);
-      });
-   
+    });
+    const btnAjoutG = contenu.querySelector('#btnAjoutGroupe')
+    btnAjoutG.addEventListener("click", () => {
+        const popup = ajoutGroupe();
+        contenu.appendChild(popup);
+    });
+
+    const titres = contenu.querySelectorAll('.title div')
+    titres[0].addEventListener('click', ()=>{
+        titreDynamique("Messages");
+    })
+
+    titres[1].addEventListener('click', ()=>{
+        titreDynamique("Statut");
+    })
+
+    titres[2].addEventListener('click', ()=>{
+        titreDynamique("Chaine");
+    })
+    
+    titres[3].addEventListener('click', ()=>{
+        titreDynamique("Communautés");
+    })
+
+    titres[4].addEventListener('click', ()=>{
+        titreDynamique("Ajout contact");
+    })
+
+    titres[5].addEventListener('click', ()=>{
+        titreDynamique("Ajout groupe");
+    })
+
     const div = contenu.querySelector('#contacts-container')
     // console.log(div);
     div.appendChild(listeMessage())
+    div.appendChild(listeGroupe())
     
    
     const logout = contenu.querySelector(".logout")

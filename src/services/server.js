@@ -1,4 +1,6 @@
 const BASE_URL = "http://localhost:3000/utilisateurs";
+const BASE_URL1 = "http://localhost:3000/groupes";
+
 
 export async function getUserByPhone(numero) {
 
@@ -21,10 +23,25 @@ export async function getUser() {
   return await res.json();
 }
 
+export async function getGroupe() {
+  const res = await fetch(BASE_URL1)
+  return await res.json();
+}
 
 
 export async function createUser(user) {
   const res = await fetch(BASE_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user)
+  });
+
+  if (!res.ok) return false;
+  return await res.json();
+}
+
+export async function createGroupe(user) {
+  const res = await fetch(BASE_URL1, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(user)

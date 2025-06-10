@@ -1,4 +1,5 @@
 import { getUser } from "../services/server.js";
+// import { profil } from "../views/afficherProfil.js";
 // import { utilisateurs } from "../data.json";
 
 export  function listeMessage() {
@@ -10,22 +11,27 @@ export  function listeMessage() {
         // console.log(data);
 
         data.forEach(u => {
+         let initial = u.nom.charAt(0).toUpperCase() +  u.prenom.charAt(0).toUpperCase() ;
+ 
             // const taille = u.messages.length - 1
             const element = document.createElement('div')
             element.className=" contact-item flex items-center p-4 hover:bg-gray-400 cursor-pointer border-b border-gray-800"
             element.innerHTML= `
-                 <div class="relative">
-                     <img src="https://i.pravatar.cc/40?img=1" alt="BootTata" class="w-12 h-12 rounded-full">
+                 <div class="item relative w-[4rem] h-[4rem] bg-slate-800 rounded-full items-center justify-center flex text-white flex-row ">
+                 ${initial} 
                  </div>
                        <div class="ml-3 flex-1 min-w-0">
                            <div class="flex items-center justify-between">
-                               <h3 class="text-white font-medium truncate">${u.nom}</h3>
+                               <h3 class="text-white font-medium truncate">${u.nom} ${u.prenom}  </h3>
                                <span class="text-xs text-gray-500">00:46</span>
                            </div>
                            <p class="text-sm text-white  truncate mt-1">${u.messages[0].contenu}</p>
                        </div>
          
        `
+
+
+     
        div.appendChild(element)
         });
       })
