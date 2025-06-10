@@ -4,7 +4,7 @@ import { listeMessage } from "../views/listeMessages.js";
 import { ajouterContact } from "../components/creerContact.js";
 import { ajoutGroupe } from "../components/creerGroupe.js";
 import { titreDynamique } from "../components/titreDynamique.js";
-import { listeGroupe } from "../views/afficherGroup.js";
+// import { listeGroupe } from "../views/afficherGroup.js";
 
 
 export  function interfaceU() {
@@ -429,7 +429,7 @@ export  function interfaceU() {
     const div = contenu.querySelector('#contacts-container')
     // console.log(div);
     div.appendChild(listeMessage())
-    div.appendChild(listeGroupe())
+    // div.appendChild(listeGroupe())
     
    
     const logout = contenu.querySelector(".logout")
