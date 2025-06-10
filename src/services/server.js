@@ -1,5 +1,4 @@
-const BASE_URL = "http://localhost:3000/utilisateurs";
-const BASE_URL1 = "http://localhost:3000/groupes";
+const BASE_URL = "https://jsonback.onrender.com";
 
 
 export async function getUserByPhone(numero) {
