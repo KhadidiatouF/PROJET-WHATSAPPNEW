@@ -3,11 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "../service/server.js",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "echo Je suis là !"
+    "start": "node ../service/server.js "
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
