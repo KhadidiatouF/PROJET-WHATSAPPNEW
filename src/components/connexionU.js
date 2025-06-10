@@ -18,7 +18,7 @@ export function connexionU() {
         <div class="container w-[75rem] h-[35rem] bg-white shadow-xl shadow-[#1d1c1c] rounded-[50px] flex justify-center items-center">
             <div class="content w-[90rem] h-[42rem] rounded-[50px] flex flex-row">
                <div class="w-1/2 h-full rounded-tl-[50px] rounded-bl-[50px] bg-white">
-                 <img src="/src/assets/login.png" class="w-full h-full object-contain" alt="">
+                 <img src="/assets/login.png" class="w-full h-full object-contain" alt="">
                </div>
 
                 <div class="w-1/2 h-full bg-white rounded-tr-[50px] rounded-br-[50px] flex justify-center items-center">
