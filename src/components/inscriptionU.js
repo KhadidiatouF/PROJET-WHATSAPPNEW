@@ -10,7 +10,7 @@ export function inscriptionU() {
   div.innerHTML = `
     <div class="container w-[70rem] h-[40rem] bg-white shadow-lg rounded-[50px] flex justify-center items-center">
         <div class="w-1/2 h-full rounded-tl-[50px] rounded-bl-[50px] bg-white">
-          <img src="/src/assets/inscription.png" class="w-full h-full object-contain" alt="">
+          <img src="/assets/inscription.png" class="w-full h-full object-contain" alt="">
         </div>
       <div class="w-full max-w-[40rem] bg-white rounded-xl p-10 flex flex-col gap-5 shadow-md">
         <h2 class="text-2xl font-bold text-center text-[#6dc262]">Inscription</h2>
