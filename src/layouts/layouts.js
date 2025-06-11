@@ -4,7 +4,9 @@ import { listeMessage } from "../views/listeMessages.js";
 import { ajouterContact } from "../components/creerContact.js";
 import { ajoutGroupe } from "../components/creerGroupe.js";
 import { titreDynamique } from "../components/titreDynamique.js";
-// import { listeGroupe } from "../views/afficherGroup.js";
+import { listeGroupe } from "../views/afficherGroup.js";
+import { afficherMessage } from "../views/afficherConv.js";
+
 
 
 export  function interfaceU() {
@@ -17,32 +19,32 @@ export  function interfaceU() {
     
         <div class="w-[8rem]  justify-between rounded-tl-[50px] rounded-bl-[50px]  bg-[#202c33] border-r border-gray-700 flex flex-col">
            <div class="title flex m-1 mt-4 justify-center items-center text-center  flex-col text-2xl text-[#aebac1] space-y-4 cursor-pointer ">
-                <div tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
+                <div tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:text-white hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
                     <i class=" mt-[10px] fa-solid fa-message"></i>
                     <h5 class="text-xs font-bold">Messages</h5>
                 </div>
                 
-                <div tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
+                <div tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:text-white hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
                   <i class="mt-[10px] fa-solid fa-circle-notch "></i>
                     <h5 class="text-xs font-bold">Statuts</h5>
                 </div>
 
-                <div tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
+                <div tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:text-white hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
                     <i class="mt-[10px] fa-regular fa-comment  "></i>
                     <h5 class="text-xs font-bold">Chaines</h5>
                 </div>
 
-                <div tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
+                <div tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:text-white hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
                     <i class="mt-[10px] fa-solid fa-users "></i>
                     <h5 class="text-xs font-bold">Communautés</h5>
                 </div>
 
-                <div id="btnAjoutContact"  tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 " >
+                <div id="btnAjoutContact"  tabindex="0"  class=" w-[6rem] h-[4rem]  hover:text-white  rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 " >
                     <i class="mt-[10px] fa-solid fa-user-plus"></i>
                     <h5 class="text-xs font-bold">Ajout contact</h5>
                 </div>
                 
-                <div id="btnAjoutGroupe" tabindex="0"  class=" w-[6rem] h-[4rem]   rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
+                <div id="btnAjoutGroupe" tabindex="0"  class=" w-[6rem] h-[4rem] hover:text-white  rounded-[10px] hover:bg-green-700 active:bg-green-700  focus:bg-green-700 ">
                     <i class="mt-[10px] fa-solid fa-folder-plus"></i>
                     <h5 class="text-xs font-bold">Ajout groupe</h5>
                 </div>
@@ -101,112 +103,7 @@ export  function interfaceU() {
             <!-- Contact List -->
             
             <div id="contacts-container" class=" contact flex-1 overflow-y-auto">
-                <!-- <div class="contact-item flex items-center p-4 hover:bg-gray-400 cursor-pointer border-b border-gray-800" onclick="selectChat(this)">
-                    <div class="relative">
-                        <img src="https://i.pravatar.cc/40?img=1" alt="BootTata" class="w-12 h-12 rounded-full">
-                    </div>
-                    <div class="ml-3 flex-1 min-w-0">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-white font-medium truncate">Anna</h3>
-                            <span class="text-xs text-gray-500">00:46</span>
-                        </div>
-                        <p class="text-sm text-white  truncate mt-1">A réagi par ❤️ à : <i class="fa-solid fa-note-sticky"></i> Sticker</p>
-                    </div>
-                </div>
-
-                <div class="contact-item flex items-center p-4 hover:bg-gray-400 cursor-pointer border-b border-gray-800" onclick="selectChat(this)">
-                    <div class="relative">
-                        <img src="https://i.pravatar.cc/40?img=2" alt="Life" class="w-12 h-12 rounded-full">
-                    </div>
-                    <div class="ml-3 flex-1 min-w-0">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-white  font-medium truncate">Ismaila FALL</h3>
-                            <span class="text-xs text-white ">00:41</span>
-                        </div>
-                        <p class="text-sm text-white  truncate mt-1"><i class="fa-solid fa-note-sticky"></i>  Sticker</p>
-                    </div>
-                </div>
-
-                <div class="contact-item flex items-center p-4 hover:bg-gray-400 cursor-pointer border-b border-gray-800" onclick="selectChat(this)">
-                    <div class="relative">
-                        <img src="https://i.pravatar.cc/40?img=3" alt="Thierno" class="w-12 h-12 rounded-full">
-                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
-                    </div>
-                    <div class="ml-3 flex-1 min-w-0">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-white  font-medium truncate">Thierno DevWeb SA</h3>
-                            <span class="text-xs text-white ">01:35</span>
-                        </div>
-                        <p class="text-sm text-white  truncate mt-1"><i class="fa-solid fa-note-sticky"></i> Sticker</p>
-                    </div>
-                </div>
-
                
-                <div class="contact-item flex items-center p-4 hover:bg-gray-400 cursor-pointer border-b border-gray-800" onclick="selectChat(this)">
-                    <div class="relative">
-                        <img src="https://i.pravatar.cc/40?img=4" alt="Oussou" class="w-12 h-12 rounded-full">
-                    </div>
-                    <div class="ml-3 flex-1 min-w-0">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-white  font-medium truncate">Oussou Boyyy ❤️</h3>
-                            <span class="text-xs text-white ">01:27</span>
-                        </div>
-                        <p class="text-sm text-white  truncate mt-1">j'ai remarqué kay Bima délouwé classe waxoniou sank...</p>
-                    </div>
-                </div>
-
-                <div class="contact-item bg-gray-900 flex items-center p-4 hover:bg-gray-400 cursor-pointer border-b border-gray-800" onclick="selectChat(this)">
-                    <div class="relative">
-                        <img src="https://i.pravatar.cc/40?img=5" alt="Lady React" class="w-12 h-12 rounded-full">
-                    </div>
-                    <div class="ml-3 flex-1 min-w-0">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-white  font-medium truncate">Lady React SA 🔥</h3>
-                            <span class="text-xs text-white ">01:03</span>
-                        </div>
-                        <p class="text-sm text-white  truncate mt-1">Waa tkt pas dinay ande ak nitt wala meu dieul auto rek</p>
-                    </div>
-                </div>
-
-                <div class="contact-item flex items-center p-4 hover:bg-gray-400 cursor-pointer border-b border-gray-800" onclick="selectChat(this)">
-                    <div class="relative">
-                        <img src="https://i.pravatar.cc/40?img=6" alt="Abdoulaye" class="w-12 h-12 rounded-full">
-                    </div>
-                    <div class="ml-3 flex-1 min-w-0">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-white  font-medium truncate">Abdoulaye Ly SA</h3>
-                            <span class="text-xs text-white ">00:53</span>
-                        </div>
-                        <p class="text-sm text-white  truncate mt-1">Ok kone baxna 'A demain inchâ Allah</p>
-                    </div>
-                </div>
-
-                <div class="contact-item flex items-center p-4 hover:bg-gray-400 cursor-pointer border-b border-gray-800" onclick="selectChat(this)">
-                    <div class="relative">
-                        <img src="https://i.pravatar.cc/40?img=7" alt="Sems" class="w-12 h-12 rounded-full">
-                    </div>
-                    <div class="ml-3 flex-1 min-w-0">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-white  font-medium truncate">Sems</h3>
-                            <span class="text-xs text-white ">00:45</span>
-                        </div>
-                        <p class="text-sm text-white  truncate mt-1">Sougnou heure yi bokoul lol. Heure bingamay texte fek ...</p>
-                    </div>
-                </div>
-
-                <div class="contact-item flex items-center p-4 hover:bg-gray-400 cursor-pointer border-b border-gray-700" onclick="selectChat(this)">
-                    <div class="relative">
-                        <img src="https://i.pravatar.cc/40?img=8" alt="L'alchimiste" class="w-12 h-12 rounded-full">
-                    </div>
-                    <div class="ml-3 flex-1 min-w-0">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-white  font-medium truncate">L'alchimiste Du Code💻</h3>
-                            <span class="text-xs text-white ">00:36</span>
-                        </div>
-                        <p class="text-sm text-white  truncate mt-1">D'accord Bye 👋</p>
-                    </div>
-                    <div class="w-2 h-2 bg-green-500 rounded-full ml-2"></div>
-                </div>-->
             </div> 
         </div>
 
@@ -217,7 +114,7 @@ export  function interfaceU() {
                 <div class="profil flex items-center">
                     <img src="https://i.pravatar.cc/40?img=5" alt="Lady React SA" class="w-10 h-10 rounded-full">
                     <div class="ml-3">
-                        <h2 class=nom-profil "font-semibold text-white">Lady React SA 🔥</h2>
+                        <h2 class="nom-profil font-semibold text-white">Lady React SA 🔥</h2>
                         <p class="numero-profil text-sm text-gray-400">Dernière connexion hier</p>
                     </div>
                 </div>
@@ -240,7 +137,7 @@ export  function interfaceU() {
 
             <!-- Messages -->
             <div class="flex-1 overflow-y-auto p-4 bg-[#0b141a] rounded-tr-[50px] rounded-br-[50px]">
-                <div id="zone-discussion" class=" messagesList space-y-3">
+                <div id="zone-discussion" class="messagesList space-y-3">
                     <!-- Message reçu et Message envoyé -->
 
                     <!-- <div class="flex justify-start">
@@ -375,19 +272,29 @@ export  function interfaceU() {
                             type="text"
                             id="messageInput"
                             placeholder="Entrez un message"
-                            class="w-full px-4 py-2 bg-[#2a3942] rounded-full focus:outline-none focus:ring-2 focus:ring-green-500"
-                            onkeypress="handleKeyPress(event)"
+                            class="mess w-full px-4 py-2 bg-[#2a3942] rounded-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                           
                         />
                     </div>
                     
-                    <button id="sendBtn" onclick="sendMessage()" class="p-2 hover:bg-gray-100 rounded-full">
-                        <i class="fas fa-microphone text-gray-600"></i>
+                    <button id="sendBtn" class="p-2 text-gray-300 hover:bg-gray-500 rounded-full">
+                        <i class="vocal  fas fa-microphone text-gray-600"></i>
+                        <i class="envoie hidden fa-solid fa-paper-plane"></i>
                     </button>
                 </div>
             </div>
         
     `;
 
+    const mess = contenu.querySelector('.mess')
+    mess.addEventListener('keydown', ()=>{
+        const envoie = contenu.querySelector('.envoie')
+        const vocal = contenu.querySelector('.vocal')
+        
+        envoie.classList.remove('hidden')
+        vocal.classList.add('hidden')
+
+    })
    
 
     const btnAjoutC = contenu.querySelector('#btnAjoutContact')
@@ -407,11 +314,11 @@ export  function interfaceU() {
     })
 
     titres[1].addEventListener('click', ()=>{
-        titreDynamique("Statut");
+        titreDynamique("Statuts");
     })
 
     titres[2].addEventListener('click', ()=>{
-        titreDynamique("Chaine");
+        titreDynamique("Chaines");
     })
     
     titres[3].addEventListener('click', ()=>{
@@ -429,7 +336,13 @@ export  function interfaceU() {
     const div = contenu.querySelector('#contacts-container')
     // console.log(div);
     div.appendChild(listeMessage())
-    // div.appendChild(listeGroupe())
+    div.appendChild(listeGroupe())
+
+    const zone = contenu.querySelector('#zone-discussion')
+    zone.appendChild(afficherMessage())
+    
+    // afficherMessage("1")
+
     
    
     const logout = contenu.querySelector(".logout")

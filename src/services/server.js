@@ -1,20 +1,16 @@
-const BASE_URL = "https://jsonback.onrender.com/utilisateurs";
+// const BASE_URL = "https://jsonback.onrender.com/utilisateurs";
+// const BASE_URL1 = "https://jsonback.onrender.com/groupes";
+
+const BASE_URL = "http://localhost:3000/utilisateurs";
+const BASE_URL1 = "http://localhost:3000/groupes";
+
 
 
 export async function getUserByPhone(numero) {
-
     numero = '%2B' + numero.slice(1);
-    console.log(numero);
-  
   const res = await fetch(`${BASE_URL}?numero=${numero}`);
-  // console.log(res);
-  
   const utilisateurs = await res.json();
-  // console.log(utilisateurs);
-
   return utilisateurs.length > 0 ? utilisateurs[0] : null;
-
-  
 }
 
 export async function getUser() {
@@ -35,6 +31,27 @@ export async function createUser(user) {
   if (!res.ok) return false;
   return await res.json();
 }
+
+
+export async function getGroupe() {
+  const res = await fetch(BASE_URL1)
+  return await res.json();
+}
+
+
+
+
+export async function createGroupe(user) {
+  const res = await fetch(BASE_URL1, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user)
+  });
+
+  if (!res.ok) return false;
+  return await res.json();
+}
+
 
 
 

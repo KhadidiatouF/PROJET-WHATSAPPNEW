@@ -63,7 +63,7 @@ export function connexionU() {
     const numero = Inumero.value.trim();
     const pays = selectPays.value.trim();
     let  numeroComplet = pays + numero;
-    console.log(typeof numeroComplet)
+    // console.log(typeof numeroComplet)
 
     errorText.classList.add("hidden");
 
@@ -72,11 +72,17 @@ export function connexionU() {
       errorText.classList.remove("hidden");
       return;
     }
-    // if (numero !== NaN) {
+    // if (isNaN(numero)) {
     //   errorText.textContent = "Le numéro doit etre avoir uniquement des chiffres.";
     //   errorText.classList.remove("hidden");
     //   return;
     // }
+
+    if (!/^\d+$/.test(numero)) {
+      errorText.textContent = "Le numéro doit contenir uniquement des chiffres.";
+      errorText.classList.remove("hidden");
+      return;
+    }
 
     // if (validerNumero(numero) === false) {
     //   errorText.textContent = "Le numéro est invalide";

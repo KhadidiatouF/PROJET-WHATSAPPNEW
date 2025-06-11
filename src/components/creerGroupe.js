@@ -1,5 +1,4 @@
-// import { createGroupe, createUser, getGroupe } from "../services/server.js";
-import { getUser } from "../services/server.js";
+import { createGroupe, getGroupe } from "../services/server.js";
 
 
 export function ajoutGroupe() {
