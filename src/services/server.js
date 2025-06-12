@@ -1,8 +1,8 @@
-// const BASE_URL = "https://jsonback.onrender.com/utilisateurs";
-// const BASE_URL1 = "https://jsonback.onrender.com/groupes";
+const BASE_URL = "https://jsonback.onrender.com/utilisateurs";
+const BASE_URL1 = "https://jsonback.onrender.com/groupes";
 
-const BASE_URL = "http://localhost:3000/utilisateurs";
-const BASE_URL1 = "http://localhost:3000/groupes";
+// const BASE_URL = "http://localhost:3000/utilisateurs";
+// const BASE_URL1 = "http://localhost:3000/groupes";
 
 
 
@@ -31,6 +31,31 @@ export async function createUser(user) {
   if (!res.ok) return false;
   return await res.json();
 }
+
+export async function deleteUser(userId) {
+  const res = await fetch(`${BASE_URL}/${userId}`, {
+    method: "DELETE"
+  });
+
+  if (!res.ok) {
+    console.error("Erreur lors de la suppression");
+    return false;
+  }
+
+  return true;
+}
+
+// export async function deleteUser(user) {
+//   const res = await fetch(BASE_URL, {
+//     method: "DELETE",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ id: user.id })
+//   });
+
+//   if (!res.ok) return false;
+//   return await res.json();
+// }
+
 
 
 export async function getGroupe() {

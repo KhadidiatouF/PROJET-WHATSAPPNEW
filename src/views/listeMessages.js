@@ -1,60 +1,116 @@
-import { getUser } from "../services/server.js";
+import { router } from "../routerr.js";
+import { deleteUser, getUser } from "../services/server.js";
 // import { profil } from "../views/afficherProfil.js";
 // import { utilisateurs } from "../data.json";
+import { etat } from "../store/userStore.js";
 
 export  function listeMessage() {
   
     const div = document.createElement('div');
 
-        // console.log('bonjour');
   
     getUser().then(data =>{ 
-        // console.log('bonjour');
-        
-        // console.log(data);
+     
 
         const idUser = localStorage.getItem('userIdConnected')
-
         const user = data.find(u => u.id === idUser)
-        // console.log(user);
-        
-        // console.log(data);
-        
+      
         data.forEach(u => {
          let initial = u.nom.charAt(0).toUpperCase() +  u.prenom.charAt(0).toUpperCase() ;
          
-            // console.log(u);
-            // console.log(user.contacts);
-            // console.log(u);
+            
             
             if (user.contacts.includes(Number (u.id))) {
                 
                 const element = document.createElement('div')
-                element.className=" contact-item flex items-center p-4 hover:bg-gray-400 cursor-pointer border-b border-gray-800"
+                element.className="contact-item flex items-center p-4 hover:bg-gray-400  cursor-pointer border-b border-gray-800"
                 element.innerHTML= `
                      <div class="item relative w-[4rem] h-[4rem] bg-slate-800 rounded-full items-center justify-center flex text-white flex-row ">
                      ${initial} 
                      </div>
-                           <div class="ml-3 flex-1 min-w-0">
+                           <div id="" class="ml-3 flex-1 min-w-0">
                                <div class="flex items-center justify-between">
                                    <h3 class="text-white font-bold truncate">${u.nom} ${u.prenom}  </h3>
                                    <span class="text-xs text-gray-500">00:46</span>
                                </div>
                                
                                <p class="text-sm text-white  truncate mt-1">${u.messages && u.messages.length >0  ? u.messages[0].contenu : "Aucun message"}</p>
-                               <div class="flex justify-end text-gray-300 "><i class="fa-solid fa-angle-down"></i></div>
+                               <div class="boutonBas  relative flex justify-end text-gray-300 "><i class="fa-solid fa-angle-down"></i>
+                                    <div class="dropdown-menu absolute right-0 mt-2 w-40 bg-gray-700 rounded-md shadow-lg hidden z-10">
+                                    <ul class="py-2 text-sm text-white">
+                                        <li class="px-4 py-2  hover:bg-gray-600 cursor-pointer"><i class="fa-solid fa-box-archive"></i> &nbsp;Archiver</li>
+                                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer"><i class="fa-solid fa-square-minus"></i> &nbsp;Bloquer</li>
+                                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer"><i class="fa-solid fa-thumbtack"></i>  &nbsp;Epingler </li>
+                                        <li class="supprimer px-4 py-2 hover:bg-gray-600 cursor-pointer"><i class="fa-solid fa-trash-can"></i>  &nbsp;Supprimer</li>
+                                    </ul>
+                                    </div>
+                               </div>
+                               
                            </div>
              
            `
            div.appendChild(element)
-            }
-            // const taille = u.messages.length - 1
-            // console.log(u.messages);
+
+           element.addEventListener('click', ()=>{
+                etat.userClicked=u
+                console.log(etat.userClicked);
+                // console.log(etat.currentUser);
+                router("/homePage")
+                    
+            })
+
+        
+
+        const supprim = element.querySelector('.supprimer');
+        supprim.addEventListener('click', async () => {
+         etat.userClicked= user.contacts
             
-           
+          if (etat.userClicked === user.contacts) {
+            // console.log(etat.userClicked);
+
+            const userId = etat.userClicked;
+        
+            const confirmed = confirm("Confirmer la suppression ?");
+            if (!confirmed) return;
+        
+            const success = await deleteUser(userId);
+        
+            if (success) {
+              alert("Utilisateur supprimé !");
+              element.remove(); 
+            } else {
+              alert("Échec de la suppression !");
+            }
+          }
         });
+        
+
+         
+
+           const bouton = element.querySelector('.boutonBas')
+           const menu = element.querySelector('.dropdown-menu');
+           
+           bouton.addEventListener('click', (e)=>{
+            e.stopPropagation()
+             
+            menu.classList.toggle('hidden');
+     
+           })
+   
+           document.addEventListener('click', (e) => {
+            if (!bouton.contains(e.target)) {
+              menu.classList.add('hidden');
+            }
+          });
+          
+            }
+            
+        });
+      
+  
       })
 
+     
     return div;
 
 }

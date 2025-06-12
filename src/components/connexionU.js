@@ -4,6 +4,8 @@ import { getUserByPhone  } from "../services/server.js";
 import { setUser } from "../store/userStore.js";
 import { inscriptionU } from "../components/inscriptionU.js";
 import { validerNumero } from "../utils/validator.js";
+import { etat } from "../store/userStore.js";
+
 
 
 export function connexionU() {
@@ -94,6 +96,7 @@ export function connexionU() {
     if (user) {
       localStorage.setItem("userIdConnected",user.id )
       setUser(user);
+      etat.currentUser = user
       router("/homePage"); 
 
     } else {

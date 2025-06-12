@@ -10,8 +10,6 @@ import { afficherMessage } from "../views/afficherConv.js";
 
 
 export  function interfaceU() {
-   
-    
     const contenu = document.createElement("div")
     contenu.className="flex w-[80%]  h-screen  mt-[-6rem]  shadow-xl shadow-[#1d1c1c] rounded-[50px] "
     contenu.innerHTML=`
@@ -136,7 +134,7 @@ export  function interfaceU() {
             </div>
 
             <!-- Messages -->
-            <div class="flex-1 overflow-y-auto p-4 bg-[#0b141a] rounded-tr-[50px] rounded-br-[50px]">
+            <div class="flex-1 overflow-y-auto p-4 bg-[#0b141a]">
                 <div id="zone-discussion" class="messagesList space-y-3">
                     <!-- Message reçu et Message envoyé -->
 
@@ -340,11 +338,7 @@ export  function interfaceU() {
 
     const zone = contenu.querySelector('#zone-discussion')
     zone.appendChild(afficherMessage())
-    
-    // afficherMessage("1")
-
-    
-   
+       
     const logout = contenu.querySelector(".logout")
     logout.addEventListener("click", ()=>{
         localStorage.removeItem("userIdConnected")

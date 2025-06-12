@@ -1,10 +1,18 @@
-import { createGroupe, getGroupe } from "../services/server.js";
+import { createGroupe, getGroupe, getUser } from "../services/server.js";
+import { getUserById } from "../store/userStore.js";
+import { afficherMessage } from "../views/afficherConv.js";
+import { listeGroupe } from "../views/afficherGroup.js";
+
 
 
 export function ajoutGroupe() {
+  const idUser = localStorage.getItem('userIdConnected')
+ 
+
+
     const overlay = document.createElement("div");
     overlay.className = "fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50";
-  
+   
     const modal = document.createElement("div");
     modal.className = "bg-[#202c33] w-[60rem] rounded-[40px] shadow-lg p-10 relative";
   
@@ -18,13 +26,12 @@ export function ajoutGroupe() {
           <input id="nomG" type="text" class="w-full border px-4 py-2 rounded-[20px]" />
         </div>
        
-        <div class="">
-          <label class="block font-bold mb-1 text-white">Pays :</label>
-          <select id="pays" class="w-full border px-4 py-2 rounded-[20px]">
-            <option value="membres">Membres</option>
-            <option value=""></option>
-            <option value=""></option>
-          </select>
+        <div class="members">
+          <label class="block font-bold mb-1 text-white">Membres :</label>
+          <div class="memb w-full p-4 bg-white rounded-lg">
+           
+          </div>
+
         </div>
       
       </div>
@@ -43,8 +50,29 @@ export function ajoutGroupe() {
   
     const btnValider = modal.querySelector("#validerGroup");
     const btnFermer = modal.querySelector("#fermerModal");
+    // const selectMembre = modal.querySelector('#membres')
     const errorText = modal.querySelector(".error-msg");
     const successText = modal.querySelector(".success-msg");
+    getUser().then(data=>{
+      // console.log(data);
+      const userConnecte = getUserById(idUser,data)
+      // console.log(userConnecte);
+
+      const membre= modal.querySelector('.memb')
+      data.forEach(u => {
+        if (userConnecte.contacts.includes(Number (u.id))) {
+          const div = document.createElement('div')
+          div.className ="flex gap-4 justify-between"
+          div.innerHTML = `
+                <label class="block font-bold  text-black">${u.nom} ${u.prenom}</label>
+                <input id="" type="checkbox" class=""/>
+          `
+          membre.appendChild(div)
+        }
+       
+      });
+      
+    })
   
     btnValider.addEventListener("click", async () => {
       const nom = modal.querySelector("#nomG").value.trim();
@@ -58,22 +86,15 @@ export function ajoutGroupe() {
         return;
       }
   
-      
-
-       const groupes = await getGroupe();
-          const nomg = groupes.some(g => g.nomG === nom);
-      
-          if (nomg ) {
-              errorText.textContent = "Ce groupe existe déja.";
-              errorText.classList.remove("hidden");
-              return;
-            }
-  
+      const groupes = await getGroupe();
+        
       const newGroupe = {
         id: String(groupes.length + 1),
         nom,
           membres:[
            {
+            id:idUser,
+            statut:"Admin",
             messages:[]
            }
           ]
@@ -86,7 +107,6 @@ export function ajoutGroupe() {
         if (success) {
                   errorText.textContent = 'Ajout réussie !';
                   errorText.classList.add('text-green-600');
-                  // alert("Inscription réussie. Vous pouvez maintenant vous connecter.");
                 } else {
                   errorText.textContent = "Erreur lors de l'inscription.";
                   errorText.classList.remove("hidden");

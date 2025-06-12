@@ -1,4 +1,12 @@
-let currentUser = null;
+
+
+export const etat = {
+    userClicked : null,
+    currentUser: null
+
+}
+
+let currentUser= null
 
 export function setUser(utilisateurs) {
   currentUser = utilisateurs;
@@ -10,6 +18,11 @@ export function getUser() {
 
 export function isAuthenticated() {
   return !!currentUser;
+}
+
+export function getUserById(idUser, users) {
+  return users.find(u => u.id === idUser)
+
 }
 
 // let utilisateurs = null;

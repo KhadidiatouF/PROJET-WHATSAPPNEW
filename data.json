@@ -79,7 +79,7 @@
       ],
       "contacts": [
         1,
-        3
+        5
       ]
     },
     {
@@ -100,7 +100,7 @@
       ],
       "contacts": [
         2,
-        3
+        4
       ]
     }
   ],
@@ -110,7 +110,7 @@
       "nom": "P7 dev/web",
       "membres": [
         {
-          "id":"2",
+          "id": "2",
           "nom": "Jamila",
           "prenom": "Ndiaye",
           "statut": "Admin",
@@ -127,23 +127,11 @@
     },
     {
       "id": "2",
-      "nom": "P7 dev/web2",
+      "nom": "groupe1",
       "membres": [
         {
-          "nom": "OUZ",
-          "messages": [
-            {
-              "contenu": "Salut bay"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "3",
-      "nom": "Coucou",
-      "membres": [
-        {
+          "id": "4",
+          "statut": "Admin",
           "messages": []
         }
       ]
