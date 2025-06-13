@@ -11,6 +11,8 @@ import { afficherMessage } from "../views/afficherConv.js";
 
 export  function interfaceU() {
     const contenu = document.createElement("div")
+    // let initial = u.nom.charAt(0).toUpperCase() +  u.prenom.charAt(0).toUpperCase() ;
+
     contenu.className="flex w-[80%]  h-screen  mt-[-6rem]  shadow-xl shadow-[#1d1c1c] rounded-[50px] "
     contenu.innerHTML=`
         
@@ -109,11 +111,10 @@ export  function interfaceU() {
         <div class="flex-1 flex flex-col">
             <!-- Chat Header -->
             <div class="bg-[#202c33] p-4 border-b rounded-tr-[50px]  border-gray-200 flex items-center justify-between">
-                <div class="profil flex items-center">
-                    <img src="https://i.pravatar.cc/40?img=5" alt="Lady React SA" class="w-10 h-10 rounded-full">
+                <div class="profil w-[4rem] h-[4rem] font-semibold bg-gray-500 rounded-full text-white   justify-center flex  flex-row items-center">
                     <div class="ml-3">
-                        <h2 class="nom-profil font-semibold text-white">Lady React SA 🔥</h2>
-                        <p class="numero-profil text-sm text-gray-400">Dernière connexion hier</p>
+                        <h2 class="nom-profil  font-semibold text-white"></h2>
+                        <p class="numero-profil text-sm text-gray-400"></p>
                     </div>
                 </div>
                 
@@ -147,110 +148,11 @@ export  function interfaceU() {
                         </div>
                     </div>
 
-                    <div class="flex justify-start">
-                        <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-[#202c33] text-white shadow-sm">
-                            <p>Beugn bi mi nice tané na</p>
-                            <div class="flex items-center justify-end mt-1">
-                                <span class="text-xs text-gray-500">15:52</span>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="flex justify-end">
                         <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-green-500 text-white">
                             <p>Ayooo massa t'es malade? Loulay meti</p>
                             <div class="flex items-center justify-end mt-1">
                                 <span class="text-xs text-green-100">15:16</span>
-                                <i class="fas fa-check-double ml-1 text-green-100"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-end">
-                        <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-green-500 text-white">
-                            <p>Massa ay way</p>
-                            <div class="flex items-center justify-end mt-1">
-                                <span class="text-xs text-green-100">15:55</span>
-                                <i class="fas fa-check-double ml-1 text-green-100"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center my-4">
-                        <span class="text-xs text-[#8696a0] bg-[#182229] px-2 py-1 rounded">HIER</span>
-                    </div>
-
-                    <div class="flex justify-end">
-                        <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-green-500 text-white">
-                            <div class="bg-green-600 p-2 rounded mb-2">
-                                <p class="text-sm">📎 Transféré</p>
-                                <p class="text-blue-200 underline">www.youtube.com</p>
-                                <p class="text-blue-200 text-xs">https://www.youtube.com/watch?v=7lvJnkN1NwA</p>
-                            </div>
-                            <div class="flex items-center justify-end mt-1">
-                                <span class="text-xs text-green-100">08:09</span>
-                                <i class="fas fa-check-double ml-1 text-green-100"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center my-4">
-                        <span class="text-xs text-[#8696a0] bg-[#182229] px-2 py-1 rounded">AUJOURD'HUI</span>
-                    </div>
-
-                    <div class="flex justify-end">
-                        <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-green-500 text-white">
-                            <p>Coucou ❤️<br>Nakamou ba yangui tanei bou bax massaa mane dama nieew rek teud</p>
-                            <div class="flex items-center justify-end mt-1">
-                                <span class="text-xs text-green-100">00:34</span>
-                                <i class="fas fa-check-double ml-1 text-green-100"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-start">
-                        <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-[#202c33] text-white shadow-sm">
-                            <p>wa cva magui tané bou bahk kay ioe ba cva biguay nieble refk</p>
-                            <div class="flex items-center justify-end mt-1">
-                                <span class="text-xs text-gray-500">00:41</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-end">
-                        <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-green-500 text-white">
-                            <p>Ah alhamdoulilah massa diemal khol no delio hopital sinon dmala sonal</p>
-                            <div class="flex items-center justify-end mt-1">
-                                <span class="text-xs text-green-100">00:43</span>
-                                <i class="fas fa-check-double ml-1 text-green-100"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-end">
-                        <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-green-500 text-white">
-                            <p>Waa mane javais pas de souci sama mak bi da am kou ma bofel mom la dadiel et sur le chemin comme par hasard ma guissat un ami de thies nonou lagn andei nou trois</p>
-                            <div class="flex items-center justify-end mt-1">
-                                <span class="text-xs text-green-100">00:44</span>
-                                <i class="fas fa-check-double ml-1 text-green-100"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-start">
-                        <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-[#202c33] text-white shadow-sm">
-                            <p>en ok heureusement soit prudente de wautoul</p>
-                            <div class="flex items-center justify-end mt-1">
-                                <span class="text-xs text-gray-500">01:00</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-end">
-                        <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg bg-green-500 text-white">
-                            <p>Waa tkt pas dinay ande ak nitt wala meu dieul auto rek</p>
-                            <div class="flex items-center justify-end mt-1">
-                                <span class="text-xs text-green-100">01:03</span>
                                 <i class="fas fa-check-double ml-1 text-green-100"></i>
                             </div>
                         </div>
@@ -338,6 +240,8 @@ export  function interfaceU() {
 
     const zone = contenu.querySelector('#zone-discussion')
     zone.appendChild(afficherMessage())
+
+    
        
     const logout = contenu.querySelector(".logout")
     logout.addEventListener("click", ()=>{

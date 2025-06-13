@@ -1,3 +1,4 @@
+import { profil } from "../components/profil.js";
 import { router } from "../routerr.js";
 import { deleteUser, getUser } from "../services/server.js";
 // import { profil } from "../views/afficherProfil.js";
@@ -48,67 +49,95 @@ export  function listeMessage() {
                                
                            </div>
              
-           `
-           div.appendChild(element)
+               `
+                div.appendChild(element)
 
-           element.addEventListener('click', ()=>{
-                etat.userClicked=u
-                console.log(etat.userClicked);
-                // console.log(etat.currentUser);
-                router("/homePage")
+                element.addEventListener('click', ()=>{
+                        etat.userClicked=u
+                        console.log(etat.userClicked);
+                        // console.log(etat.currentUser);
+                        router("/homePage")
+
+                            
+                        const user = data.find(u => 
+                            u.nom.toLowerCase() === u.nom.toLowerCase() &&
+                            u.prenom.toLowerCase() === u.prenom.toLowerCase()
+                        );
                     
-            })
+                        const nomComplet = user ? `${user.nom} ${user.prenom}` : `${u.nom} ${u.prenom}`;
+                        const numero = user ? user.numero : u.numero;
 
-        
+                        // const nomComplet = `${u.nom} ${u.prenom}`;
+                        // const numero = u.numero;
+                        profil(initial, nomComplet, numero);
+                            
+                    })
 
-        const supprim = element.querySelector('.supprimer');
-        supprim.addEventListener('click', async () => {
-         etat.userClicked= user.contacts
             
-          if (etat.userClicked === user.contacts) {
-            // console.log(etat.userClicked);
 
-            const userId = etat.userClicked;
+            // if (etat.userClicked) {
+            //     const user = data.find(u => 
+            //         u.nom.toLowerCase() === u.nom.toLowerCase() &&
+            //         u.prenom.toLowerCase() === u.prenom.toLowerCase()
+            //     );
+            
+            //     const nomComplet = user ? `${user.nom} ${user.prenom}` : `${u.nom} ${u.prenom}`;
+            //     const numero = user ? user.numero : u.numero;
+            //     profil(initial, nomComplet, numero);
+                
+            // }
         
-            const confirmed = confirm("Confirmer la suppression ?");
-            if (!confirmed) return;
-        
-            const success = await deleteUser(userId);
-        
-            if (success) {
-              alert("Utilisateur supprimé !");
-              element.remove(); 
-            } else {
-              alert("Échec de la suppression !");
+
+            const supprim = element.querySelector('.supprimer');
+            supprim.addEventListener('click', async () => {
+            etat.userClicked= user.contacts
+                
+            if (etat.userClicked === user.contacts) {
+                // console.log(etat.userClicked);
+
+                const userId = etat.userClicked;
+            
+                const confirmed = confirm("Confirmer la suppression ?");
+                if (!confirmed) return;
+            
+                const success = await deleteUser(userId);
+            
+                if (success) {
+                alert("Utilisateur supprimé !");
+                element.remove(); 
+                } else {
+                alert("Échec de la suppression !");
+                }
             }
-          }
-        });
+            });
         
 
          
 
-           const bouton = element.querySelector('.boutonBas')
-           const menu = element.querySelector('.dropdown-menu');
-           
-           bouton.addEventListener('click', (e)=>{
-            e.stopPropagation()
-             
-            menu.classList.toggle('hidden');
-     
-           })
    
-           document.addEventListener('click', (e) => {
-            if (!bouton.contains(e.target)) {
-              menu.classList.add('hidden');
-            }
-          });
+           
           
             }
             
         });
       
+
+        const bouton = div.querySelector('.boutonBas')
+        const menu = div.querySelector('.dropdown-menu');
+        
+        bouton.addEventListener('click', (e)=>{
+         e.stopPropagation()
+          
+         menu.classList.toggle('hidden');
   
-      })
+        })
+        document.addEventListener('click', (e) => {
+            if (!bouton.contains(e.target)) {
+              menu.classList.add('hidden');
+            }
+          });
+  
+    })
 
      
     return div;

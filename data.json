@@ -135,6 +135,61 @@
           "messages": []
         }
       ]
+    },
+    {
+      "id": "3",
+      "nom": "groupe2",
+      "membres": [
+        {
+          "id": "1",
+          "statut": "Admin",
+          "messages": []
+        },
+        {
+          "id": "2",
+          "prenom": "Ndiaye",
+          "statut": "Membre",
+          "messages": []
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "nom": "groupe3",
+      "membres": [
+        {
+          "id": "1",
+          "statut": "Admin",
+          "messages": []
+        },
+        {
+          "id": "2",
+          "prenom": "Ndiaye",
+          "statut": "Membre",
+          "messages": []
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "nom": "groupe4",
+      "membres": [
+        {
+          "id": "1",
+          "statut": "Admin",
+          "messages": []
+        },
+        {
+          "id": "2",
+          "statut": "Membre",
+          "messages": []
+        },
+        {
+          "id": "3",
+          "statut": "Membre",
+          "messages": []
+        }
+      ]
     }
   ],
   "conversations": [

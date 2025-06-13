@@ -85,24 +85,66 @@ export function ajoutGroupe() {
         errorText.classList.remove("hidden");
         return;
       }
-  
+
       const groupes = await getGroupe();
+          const user = await getUser(); // Si pas déjà dans une variable globale
+
+const membresCoches = [];
+
+const checkboxes = modal.querySelectorAll('.memb input[type="checkbox"]');
+const labels = modal.querySelectorAll('.memb label');
+
+checkboxes.forEach((checkbox, index) => {
+  if (checkbox.checked) {
+    // Trouver l'ID correspondant à ce contact
+    const nomComplet = labels[index].textContent.trim();
+    const [nom, prenom] = nomComplet.split(" ");
+
+    const contact = user.find(u => u.nom === nom && u.prenom === prenom);
+
+    if (contact) {
+      membresCoches.push({
+        id: contact.id,
+        statut: "Membre",
+        messages: []
+      });
+    }
+  }
+});
+
+const newGroupe = {
+  id: String(groupes.length + 1),
+  nom,
+  membres: [
+    {
+      id: idUser,
+      statut: "Admin",
+      messages: []
+    },
+    ...membresCoches
+  ]
+};
+
+const success = await createGroupe(newGroupe);
+
+  
+    //   const groupes = await getGroupe();
         
-      const newGroupe = {
-        id: String(groupes.length + 1),
-        nom,
-          membres:[
-           {
-            id:idUser,
-            statut:"Admin",
-            messages:[]
-           }
-          ]
-      };
+    //   const newGroupe = {
+    //     id: String(groupes.length + 1),
+    //     nom,
+    //       membres:[
+    //        {
+    //         id:idUser,
+    //         statut:"Admin",
+    //         messages:[]
+    //        }
+    //       ]
+    //   };
       
   
-    //   console.log("Nouveau contact à enregistrer :", newContact);
-        const success = await createGroupe(newGroupe);
+    // //   console.log("Nouveau contact à enregistrer :", newContact);
+    //     const success = await createGroupe(newGroupe);
 
         if (success) {
                   errorText.textContent = 'Ajout réussie !';

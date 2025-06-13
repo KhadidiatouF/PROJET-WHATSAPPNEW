@@ -101,7 +101,6 @@ export function ajouterContact() {
         if (success) {
                   errorText.textContent = 'Ajout réussie. Vous pouvez maintenant vous connecter.!';
                   errorText.classList.add('text-green-600');
-                  // alert("Inscription réussie. Vous pouvez maintenant vous connecter.");
                 } else {
                   errorText.textContent = "Erreur lors de l'inscription.";
                   errorText.classList.remove("hidden");
