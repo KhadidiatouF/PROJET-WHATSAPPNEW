@@ -2,7 +2,12 @@
 // import { profil } from "../views/afficherProfil.js";
 // import { utilisateurs } from "../data.json";
 
-import { getGroupe, getUser } from "../services/server.js";
+import { changerStatutMembre } from "../components/changerStatut.js";
+import { router } from "../routerr.js";
+import { deleteGrp, getGroupe, getUser } from "../services/server.js";
+import { etat }     from "../store/userStore.js";
+
+
 
 export  function listeGroupe() {
   
@@ -37,9 +42,82 @@ export  function listeGroupe() {
                       <span class="text-xs text-gray-500">00:46</span>
                     </div>
                     <p class="text-sm text-white truncate mt-1">Membres : ${nomMembres}</p>
+
+                     <div class="btnGrp  relative flex justify-end text-gray-300 "><i class="fa-solid fa-angle-down"></i>
+                         <div class="menu absolute right-0 mt-2 w-40 bg-gray-700 rounded-md shadow-lg hidden z-10">
+                             <ul class="py-2 text-sm text-white">
+                                <li class="changer px-4 py-2  hover:bg-gray-600 cursor-pointer"><i class="fa-solid fa-power-off"></i> &nbsp; Changer statut membre</li>
+                                <li class="changer px-4 py-2  hover:bg-gray-600 cursor-pointer"><i class="fa-solid fa-user-minus"></i> &nbsp; Retirer un membre</li>
+                                <li class="sup px-4 py-2 hover:bg-gray-600 cursor-pointer"><i class="fa-solid fa-trash-can"></i>  &nbsp; Supprimer groupe</li>
+                                <li class="changer px-4 py-2  hover:bg-gray-600 cursor-pointer"><i class="fa-solid fa-ban"></i> &nbsp; Quitter le groupe</li>
+
+                              </ul>
+                          </div>
+                     </div>
                   </div>
                 `;
                 div.appendChild(element);
+                
+
+                element.addEventListener('click', ()=>{
+                  etat.groupeClicked = g
+                  etat.userClicked = null
+                  router("/homePage")
+                  
+                })
+
+
+
+                const change = element.querySelector('.changer')
+                
+                change.addEventListener('click',  ()=>{
+                  const overlay =  changerStatutMembre();
+                  element.appendChild(overlay)
+
+                })
+
+
+                  const bouton = element.querySelector('.btnGrp')
+                  const menu = element.querySelector('.menu');
+                  
+                  
+                  bouton.addEventListener('click', (e)=>{
+                  e.stopPropagation()
+                    
+                  menu.classList.toggle('hidden');
+            
+                  })
+                
+                  document.addEventListener('click', (e) => {
+                    if (!bouton.contains(e.target)) {
+                      menu.classList.add('hidden');
+                    }
+                  });
+
+
+                  const supprim = element.querySelector('.sup');
+                  supprim.addEventListener('click', async () => {
+                  etat.groupeClicked= g
+                  if (etat.groupeClicked === g) {
+                  
+                  const groupeId = etat.groupeClicked;
+                             
+                  const confirmed = confirm("Confirmer la suppression ?");
+                  if (!confirmed) return;
+                              
+                  const success = await deleteGrp(groupeId);
+                              
+                  if (success) {
+                  alert("Groupe supprimé !");
+                  element.remove(); 
+                  } else {
+                  alert("Échec de la suppression !");
+                  }
+                  }
+                  });
+
+
+
               }
             });
           });

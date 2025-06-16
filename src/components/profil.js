@@ -3,8 +3,8 @@ export function profil(initiales, nomComplet, numero) {
     const nomDiv = document.querySelector('.nom-profil');
     const numeroDiv = document.querySelector('.numero-profil');
 
-    console.log(nomDiv);
-    console.log(numeroDiv);
+    // console.log(nomDiv);
+    // console.log(numeroDiv);
     
     
 

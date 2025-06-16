@@ -20,11 +20,18 @@
           "to": 2,
           "contenu": "Salut",
           "timestamp": "2025-06-05T12:00:00"
+        },
+        {
+          "from": 1,
+          "to": 3,
+          "contenu": "Breudeuuu bi",
+          "timestamp": "2025-06-05T12:00:00"
         }
       ],
       "contacts": [
         2,
-        3
+        3,
+        6
       ]
     },
     {
@@ -56,7 +63,14 @@
       "numero": "+12023341234",
       "Online": true,
       "archive": true,
-      "messages": [],
+      "messages": [
+        {
+          "from": 3,
+          "to": 1,
+          "contenu": "Oui nka waar",
+          "timestamp": "2025-06-05T12:00:00"
+        }
+      ],
       "contacts": [
         2
       ]
@@ -102,6 +116,43 @@
         2,
         4
       ]
+    },
+    {
+      "id": "6",
+      "nom": "Papa modou",
+      "prenom": "tall",
+      "pays": "sn",
+      "numero": "+221782222222",
+      "Online": false,
+      "archive": false,
+      "messages": [
+        {
+          "contenu": ""
+        }
+      ],
+      "contacts": [
+        1,
+        3,
+        7,
+        5
+      ]
+    },
+    {
+      "id": "7",
+      "nom": "ibibib",
+      "prenom": "jojojo",
+      "pays": "sn",
+      "numero": "+221789988077",
+      "Online": false,
+      "archive": false,
+      "messages": [
+        {
+          "contenu": ""
+        }
+      ],
+      "contacts": [
+        6
+      ]
     }
   ],
   "groupes": [
@@ -142,14 +193,39 @@
       "membres": [
         {
           "id": "1",
+          "prenom": "Fall",
           "statut": "Admin",
-          "messages": []
+          "messages": [
+            {
+              "me": "1",
+              "contenu": "Salut la famille",
+              "heure": "10:00"
+            }
+          ]
         },
         {
           "id": "2",
           "prenom": "Ndiaye",
-          "statut": "Membre",
-          "messages": []
+          "statut": "Simple",
+          "messages": [
+            {
+              "expediteur": "2",
+              "contenu": "Wa siloléne nek",
+              "heure": "10:00"
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "prenom": "Diassy",
+          "statut": "Simple",
+          "messages": [
+            {
+              "expediteur": "3",
+              "contenu": "Passakaaa mangui si diaaam si lo léne nekkkk ! ",
+              "heure": "10:00"
+            }
+          ]
         }
       ]
     },
@@ -165,7 +241,7 @@
         {
           "id": "2",
           "prenom": "Ndiaye",
-          "statut": "Membre",
+          "statut": "Simple",
           "messages": []
         }
       ]
@@ -181,12 +257,12 @@
         },
         {
           "id": "2",
-          "statut": "Membre",
+          "statut": "Simple",
           "messages": []
         },
         {
           "id": "3",
-          "statut": "Membre",
+          "statut": "Simple",
           "messages": []
         }
       ]

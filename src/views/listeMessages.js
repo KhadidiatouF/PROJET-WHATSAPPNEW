@@ -4,6 +4,7 @@ import { deleteUser, getUser } from "../services/server.js";
 // import { profil } from "../views/afficherProfil.js";
 // import { utilisateurs } from "../data.json";
 import { etat } from "../store/userStore.js";
+import { afficherMessage } from "../views/afficherConv.js";
 
 export  function listeMessage() {
   
@@ -54,8 +55,9 @@ export  function listeMessage() {
 
                 element.addEventListener('click', ()=>{
                         etat.userClicked=u
-                        console.log(etat.userClicked);
-                        // console.log(etat.currentUser);
+                        etat.groupeClicked=null
+                   
+                        
                         router("/homePage")
 
                             
@@ -115,15 +117,9 @@ export  function listeMessage() {
          
 
    
-           
-          
-            }
-            
-        });
-      
-
-        const bouton = div.querySelector('.boutonBas')
-        const menu = div.querySelector('.dropdown-menu');
+            const bouton = element.querySelector('.boutonBas')
+        const menu = element.querySelector('.dropdown-menu');
+        
         
         bouton.addEventListener('click', (e)=>{
          e.stopPropagation()
@@ -131,11 +127,22 @@ export  function listeMessage() {
          menu.classList.toggle('hidden');
   
         })
+        
         document.addEventListener('click', (e) => {
             if (!bouton.contains(e.target)) {
               menu.classList.add('hidden');
             }
           });
+          
+        }
+            
+
+
+
+       
+        });
+      
+
   
     })
 

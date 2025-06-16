@@ -1,8 +1,11 @@
-import { createUser } from "../services/server.js";
+import { createUser, updateUser } from "../services/server.js";
 import { getUser } from "../services/server.js";
+import { getUserById } from "../store/userStore.js";
 
 
 export function ajouterContact() {
+  const idUser = localStorage.getItem('userIdConnected')
+
     const overlay = document.createElement("div");
     overlay.className = "fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50";
   
@@ -75,11 +78,18 @@ export function ajouterContact() {
       const numeroComplet = indicatifs[pays] + numero;
 
        const users = await getUser();
-          const numeroExiste = users.some(u => u.numero === numeroComplet);
+          const monAmi = users.find(u => u.numero === numeroComplet);
+          const userC= getUserById(idUser, users)
+          
       
-          if (numeroExiste ) {
-              errorText.textContent = "Ce numero existe déja.";
+          if (monAmi ) {
+              errorText.textContent = "Cet utilisateur a déja un compte.";
               errorText.classList.remove("hidden");
+              if (monAmi) {
+                userC.contacts.push(Number(monAmi.id))
+                userC = await updateUser(userC, idUser)
+                
+              }
               return;
             }
   
@@ -91,22 +101,27 @@ export function ajouterContact() {
         numero: numeroComplet,
         Online: false,
         archive: false,
-        messages: [{contenu:""}]
+        messages: [{contenu:""}],
+        contacts: []
       };
+
+      
       
   
-    //   console.log("Nouveau contact à enregistrer :", newContact);
         const success = await createUser(newContact);
 
+
         if (success) {
-                  errorText.textContent = 'Ajout réussie. Vous pouvez maintenant vous connecter.!';
-                  errorText.classList.add('text-green-600');
-                } else {
-                  errorText.textContent = "Erreur lors de l'inscription.";
-                  errorText.classList.remove("hidden");
-                
+          
+            successText.textContent = "Contact ajouté avec succès !";
+            successText.classList.remove("hidden");
+           
+          
+        } else {
+          errorText.textContent = "Erreur lors de la création du contact.";
+          errorText.classList.remove("hidden");
         }
-    
+
   
     //   successText.classList.remove("hidden");
   

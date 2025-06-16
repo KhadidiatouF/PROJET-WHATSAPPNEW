@@ -240,9 +240,9 @@ export  function interfaceU() {
 
     const zone = contenu.querySelector('#zone-discussion')
     zone.appendChild(afficherMessage())
-
     
-       
+    
+      
     const logout = contenu.querySelector(".logout")
     logout.addEventListener("click", ()=>{
         localStorage.removeItem("userIdConnected")

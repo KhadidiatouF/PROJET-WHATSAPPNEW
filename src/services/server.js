@@ -45,16 +45,19 @@ export async function deleteUser(userId) {
   return true;
 }
 
-// export async function deleteUser(user) {
-//   const res = await fetch(BASE_URL, {
-//     method: "DELETE",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({ id: user.id })
-//   });
 
-//   if (!res.ok) return false;
-//   return await res.json();
-// }
+export async function deleteGrp(groupeId) {
+  const res = await fetch(`${BASE_URL1}/${groupeId}`, {
+    method: "DELETE"
+  });
+
+  if (!res.ok) {
+    console.error("Erreur lors de la suppression");
+    return false;
+  }
+
+  return true;
+}
 
 
 
@@ -76,6 +79,31 @@ export async function createGroupe(user) {
   if (!res.ok) return false;
   return await res.json();
 }
+
+
+export async function updateUser(user, idUser) {
+  const res = await fetch(BASE_URL + `/${idUser}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user)
+  });
+
+  if (!res.ok) return false;
+  return await res.json();
+}
+
+
+export async function updateGroupe(groupes) {
+  const res = await fetch(BASE_URL1 + `/${groupes.id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(groupes)
+  });
+
+  if (!res.ok) return false;
+  return await res.json();
+}
+
 
 
 

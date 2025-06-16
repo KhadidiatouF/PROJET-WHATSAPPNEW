@@ -2,7 +2,8 @@
 
 export const etat = {
     userClicked : null,
-    currentUser: null
+    currentUser: null,
+    groupeClicked : null
 
 }
 
