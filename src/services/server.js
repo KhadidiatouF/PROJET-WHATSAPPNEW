@@ -82,7 +82,7 @@ export async function createGroupe(user) {
 
 
 export async function updateUser(user, idUser) {
-  const res = await fetch(BASE_URL + `/${idUser}`, {
+  const res = await fetch(BASE_URL + `/${user.id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(user)
@@ -104,6 +104,17 @@ export async function updateGroupe(groupes) {
   return await res.json();
 }
 
+
+export async function createMessage(user, idUser) {
+  const res = await fetch(BASE_URL + `/${idUser}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user)
+  });
+
+  if (!res.ok) return false;
+  return await res.json();
+}
 
 
 

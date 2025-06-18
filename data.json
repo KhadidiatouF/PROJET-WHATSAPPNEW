@@ -10,22 +10,25 @@
       "archive": true,
       "messages": [
         {
-          "from": 2,
-          "to": 1,
-          "contenu": "Nkamou",
-          "timestamp": "2025-06-05T12:00:00"
-        },
-        {
+          "id": 1750203749379,
           "from": 1,
           "to": 2,
-          "contenu": "Salut",
-          "timestamp": "2025-06-05T12:00:00"
+          "contenu": "coucou",
+          "timestamp": "23:42"
         },
         {
+          "id": 1750203827124,
           "from": 1,
-          "to": 3,
-          "contenu": "Breudeuuu bi",
-          "timestamp": "2025-06-05T12:00:00"
+          "to": 2,
+          "contenu": "ca vaaa",
+          "timestamp": "23:43"
+        },
+        {
+          "id": 1750204650835,
+          "from": 1,
+          "to": 2,
+          "contenu": "ca va lep diam",
+          "timestamp": "23:57"
         }
       ],
       "contacts": [
@@ -44,10 +47,25 @@
       "archive": true,
       "messages": [
         {
+          "id": 1750203855004,
           "from": 2,
           "to": 1,
-          "contenu": "Oui bonjour",
-          "timestamp": "2025-06-05T12:00:00"
+          "contenu": "boyyy nka war gayn",
+          "timestamp": "23:44"
+        },
+        {
+          "id": 1750204026149,
+          "from": 2,
+          "to": 1,
+          "contenu": "dddd",
+          "timestamp": "23:47"
+        },
+        {
+          "id": 1750204828098,
+          "from": 2,
+          "to": 1,
+          "contenu": "cool ni",
+          "timestamp": "00:00"
         }
       ],
       "contacts": [
@@ -68,7 +86,7 @@
           "from": 3,
           "to": 1,
           "contenu": "Oui nka waar",
-          "timestamp": "2025-06-05T12:00:00"
+          "timestamp": "17:09"
         }
       ],
       "contacts": [
@@ -88,7 +106,7 @@
           "from": 5,
           "to": 4,
           "contenu": "Coucou",
-          "timestamp": "2025-06-05T12:00:00"
+          "timestamp": "22:33"
         }
       ],
       "contacts": [
@@ -109,7 +127,7 @@
           "from": 4,
           "to": 5,
           "contenu": "No def",
-          "timestamp": "2025-06-05T12:00:00"
+          "timestamp": "18:33"
         }
       ],
       "contacts": [

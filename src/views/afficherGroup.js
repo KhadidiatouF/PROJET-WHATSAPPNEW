@@ -3,6 +3,7 @@
 // import { utilisateurs } from "../data.json";
 
 import { changerStatutMembre } from "../components/changerStatut.js";
+import { getCurrentTime } from "../components/time.js";
 import { router } from "../routerr.js";
 import { deleteGrp, getGroupe, getUser } from "../services/server.js";
 import { etat }     from "../store/userStore.js";
@@ -39,7 +40,7 @@ export  function listeGroupe() {
                   <div class="ml-3 flex-1 min-w-0">
                     <div class="flex items-center justify-between">
                       <h3 class="text-white font-medium truncate">${g.nom}</h3>
-                      <span class="text-xs text-gray-500">00:46</span>
+                      <span class="text-xs text-gray-500">${getCurrentTime()}</span>
                     </div>
                     <p class="text-sm text-white truncate mt-1">Membres : ${nomMembres}</p>
 

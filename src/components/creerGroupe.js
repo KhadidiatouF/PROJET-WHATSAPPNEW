@@ -50,13 +50,10 @@ export function ajoutGroupe() {
   
     const btnValider = modal.querySelector("#validerGroup");
     const btnFermer = modal.querySelector("#fermerModal");
-    // const selectMembre = modal.querySelector('#membres')
     const errorText = modal.querySelector(".error-msg");
     const successText = modal.querySelector(".success-msg");
     getUser().then(data=>{
-      // console.log(data);
       const userConnecte = getUserById(idUser,data)
-      // console.log(userConnecte);
 
       const membre= modal.querySelector('.memb')
       data.forEach(u => {

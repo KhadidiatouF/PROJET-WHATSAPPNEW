@@ -1,8 +1,8 @@
 import { profil } from "../components/profil.js";
+import { getCurrentTime } from "../components/time.js";
 import { router } from "../routerr.js";
 import { deleteUser, getUser } from "../services/server.js";
-// import { profil } from "../views/afficherProfil.js";
-// import { utilisateurs } from "../data.json";
+
 import { etat } from "../store/userStore.js";
 import { afficherMessage } from "../views/afficherConv.js";
 
@@ -33,10 +33,12 @@ export  function listeMessage() {
                            <div id="" class="ml-3 flex-1 min-w-0">
                                <div class="flex items-center justify-between">
                                    <h3 class="text-white font-bold truncate">${u.nom} ${u.prenom}  </h3>
-                                   <span class="text-xs text-gray-500">00:46</span>
+                                   <span class="text-xs text-gray-500">${getCurrentTime()}</span>
                                </div>
                                
-                               <p class="text-sm text-white  truncate mt-1">${u.messages && u.messages.length >0  ? u.messages[0].contenu : "Aucun message"}</p>
+                                <p class="text-sm text-white truncate mt-1">
+                                ${u.messages && u.messages.length > 0 ? u.messages[u.messages.length - 1].contenu : "Aucun message"}
+                                </p>
                                <div class="boutonBas  relative flex justify-end text-gray-300 "><i class="fa-solid fa-angle-down"></i>
                                     <div class="dropdown-menu absolute right-0 mt-2 w-40 bg-gray-700 rounded-md shadow-lg hidden z-10">
                                     <ul class="py-2 text-sm text-white">
@@ -56,10 +58,9 @@ export  function listeMessage() {
                 element.addEventListener('click', ()=>{
                         etat.userClicked=u
                         etat.groupeClicked=null
-                   
-                        
+  
+                                
                         router("/homePage")
-
                             
                         const user = data.find(u => 
                             u.nom.toLowerCase() === u.nom.toLowerCase() &&
@@ -118,7 +119,7 @@ export  function listeMessage() {
 
    
             const bouton = element.querySelector('.boutonBas')
-        const menu = element.querySelector('.dropdown-menu');
+         const menu = element.querySelector('.dropdown-menu');
         
         
         bouton.addEventListener('click', (e)=>{
@@ -136,10 +137,7 @@ export  function listeMessage() {
           
         }
             
-
-
-
-       
+ 
         });
       
 
